@@ -1,11 +1,10 @@
-//function declaration
-function updateDayandTime(){
-const daysofweek=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
-const currentDayindex= newday().getday()
-const currentday=daysofweek[currentDayindex];
-const currentUTCtime =newDate().getTime();
+const day = document.querySelector('[data-testid="currentDayOfTheWeek"]');
 
-const dayElement=document.querySelector(["data-testid=currentDayofTheWeek"]);
-const timeElement=document.querySelector(["data-testid=currentUTCTime"]);
-  dayElement.textContent=currentDay;timeElement.textContent=currentUTCtime }
-updateDayandTime();
+const myTime = function(){
+  const now = Date.now();
+  document.querySelector('[data-testid="currentUTCTime"]').innerHTML = now;
+};
+
+setInterval(myTime,1000);
+
+day.innerHTML = new Date().toLocaleString('en-US', {weekday: 'long'});
