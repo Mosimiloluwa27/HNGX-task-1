@@ -1,10 +1,14 @@
-const day = document.querySelector('[data-testid="currentDayOfTheWeek"]');
+function updateDayAndTime() {
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const currentDayIndex = new Date().getDay();
+    const currentDay = daysOfWeek[currentDayIndex];
+    const currentUTCTime = new Date().getTime();
 
-const myTime = function(){
-  const now = Date.now();
-  document.querySelector('[data-testid="currentUTCTime"]').innerHTML = now;
-};
+    const dayElement = document.querySelector('[data-testid="currentDayOfTheWeek"]');
+    const timeElement = document.querySelector('[data-testid="currentUTCTime"]');
 
-setInterval(myTime,1000);
+    dayElement.textContent = currentDay;
+    timeElement.textContent = currentUTCTime;
+}
 
-day.innerHTML = new Date().toLocaleString('en-US', {weekday: 'long'});
+updateDayAndTime();
